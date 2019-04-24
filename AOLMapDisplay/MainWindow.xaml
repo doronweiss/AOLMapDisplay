@@ -1,0 +1,38 @@
+﻿<Window x:Class="AOLMapDisplay.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AOLMapDisplay"
+        xmlns:mpsui="clr-namespace:Mapsui.UI.Wpf;assembly=Mapsui.UI.Wpf"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        Loaded="OnWindowLoaded" Closing="OnWindowClosing">
+  <Window.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="../MainResourceDict.xaml"/>
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </Window.Resources>
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="30"/>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="30"/>
+    </Grid.RowDefinitions>
+    <mpsui:MapControl Name="mapCtrl" Grid.Row="1"/>
+    <Grid Grid.Row="2">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="20"/>
+        <ColumnDefinition Width="Auto"/>
+        <ColumnDefinition Width="20"/>
+        <ColumnDefinition Width="Auto"/>
+        <ColumnDefinition Width="Auto"/>
+        <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
+      <Button Name="loadDataBTN" Grid.Column="1" Content="Load" Style="{StaticResource RoundCornerButton}" VerticalAlignment="Center" Click="OnLoadDataBtnClick"/>
+      <Button Name="printMapBTN" Grid.Column="3" Content="Print" Style="{StaticResource RoundCornerButton}" VerticalAlignment="Center" Click="OnPrintMapBtnClick"/>
+    </Grid>
+  </Grid>
+</Window>
