@@ -52,6 +52,7 @@ namespace AOLMapDisplay {
       trjLyrFeatures.Clear();
     }
 
+/*
     // draw a trajectory - simple version called on change
     private void DrawTrajectory(DataLineDefs traj, TrajChangeOpEnum changeType) {
       DrawTrajectory(traj, changeType, false);
@@ -177,6 +178,7 @@ namespace AOLMapDisplay {
           break;
       }
     }
+*/
     #endregion
 
     #region Coordinates conversion
