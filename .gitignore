@@ -338,3 +338,28 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+Mapsui.UI.Wpf.dll
+MathNet.Numerics.dll
+MathNet.Numerics.xml
+Newtonsoft.Json.dll
+Newtonsoft.Json.xml
+SkiaSharp.dll
+SkiaSharp.dll.config
+SkiaSharp.Svg.dll
+SkiaSharp.Views.Desktop.dll
+SkiaSharp.Views.WPF.dll
+SkiaSharp.xml
+System.Runtime.Extensions.dll
+aolconfig.xml
+AOLMapDisplay.exe
+AOLMapDisplay.exe.config
+AOLMapDisplay.pdb
+BruTile.dll
+ConcurrentCollections.dll
+ConcurrentCollections.xml
+libSkiaSharp.dll
+libSkiaSharp.dylib
+Mapsui.dll
+Mapsui.Geometries.dll
+Mapsui.Rendering.Skia.dll
+Mapsui.Rendering.Xaml.dll
