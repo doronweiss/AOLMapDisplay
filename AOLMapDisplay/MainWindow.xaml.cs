@@ -72,28 +72,28 @@ namespace AOLMapDisplay {
 
     //https://stackoverflow.com/questions/54950439/printing-from-mapsui-skiasharp
     private void OnPrintMapBtnClick(object sender, RoutedEventArgs e) {
-      BoundingBox extents = mapCtrl.Map.Envelope;
-      //System.Drawing.Sizef size = new System.Drawing.Sizef() {Width = 100.0f, Height = 100.0f};
-      System.Drawing.SizeF size = new System.Drawing.SizeF() { Width = 100.0f, Height = 100.0f };
-      var resolution = Mapsui.Utilities.ZoomHelper.DetermineResolution(extents.Width, extents.Height, size.Width, size.Height);
-      var viewport = new Mapsui.Viewport() {
-        Center = extents.Center.ToMapsui(),
-        Resolution = resolution,
-        Width = size.Width,
-        Height = size.Height
-      };
-
-      var msMap = map.GetMapsuiMap();
-
-      var path = System.IO.Path.GetTempFileName();
-      using (var stream = new SkiaSharp.SKFileWStream(path)) {
-        using (var document = SkiaSharp.SKDocument.CreateXps(stream, dpi)) {
-
-          var canvas = document.BeginPage(size.Width, size.Height);
-          Renderer.Render(canvas, viewport, msMap.Layers, msMap.Widgets);
-          document.EndPage();
-        }
-      }
+//      BoundingBox extents = mapCtrl.Map.Envelope;
+//      //System.Drawing.Sizef size = new System.Drawing.Sizef() {Width = 100.0f, Height = 100.0f};
+//      System.Drawing.SizeF size = new System.Drawing.SizeF() { Width = 100.0f, Height = 100.0f };
+//      var resolution = Mapsui.Utilities.ZoomHelper.DetermineResolution(extents.Width, extents.Height, size.Width, size.Height);
+//      var viewport = new Mapsui.Viewport() {
+//        Center = extents.Center.ToMapsui(),
+//        Resolution = resolution,
+//        Width = size.Width,
+//        Height = size.Height
+//      };
+//
+//      var msMap = map.GetMapsuiMap();
+//
+//      var path = System.IO.Path.GetTempFileName();
+//      using (var stream = new SkiaSharp.SKFileWStream(path)) {
+//        using (var document = SkiaSharp.SKDocument.CreateXps(stream, dpi)) {
+//
+//          var canvas = document.BeginPage(size.Width, size.Height);
+//          Renderer.Render(canvas, viewport, msMap.Layers, msMap.Widgets);
+//          document.EndPage();
+//        }
+//      }
 
     }
   }
