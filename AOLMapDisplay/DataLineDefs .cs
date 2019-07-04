@@ -8,20 +8,18 @@ using MathNet.Numerics.LinearAlgebra;
 namespace AOLMapDisplay {
   public enum TrajChangeOpEnum { Changed, Removed };
 
-  public class TrajWaypoint {
+  public class Waypoint {
     public double lat, lon, alt;
     public Vector<double> Rv;
     public double incDistance = 0.0;
     public double radius = 0.0;
-    public double Vcruise = 0.0;
-    public double CruiseAlt = 0.0;
 
     public GeoLocation GeoLocation() {
       return new GeoLocation() { lat = lat, lon = lon, alt = alt };
     }
 
-    static public TrajWaypoint FromGeoLocation(GeoLocation geol) {
-      TrajWaypoint twp = new TrajWaypoint() { lat = geol.lat * AppConsts.d2r, lon = geol.lon * AppConsts.d2r, alt = geol.alt };
+    public static Waypoint FromGeoLocation(GeoLocation geol) {
+      Waypoint twp = new Waypoint() { lat = geol.lat * AppConsts.d2r, lon = geol.lon * AppConsts.d2r, alt = geol.alt };
       return twp;
     }
   }
@@ -30,7 +28,7 @@ namespace AOLMapDisplay {
     public bool commited = false;
     public List<WorldCoord> verticesW = new List<WorldCoord>();         // 'mapsui' world coordinates
     public List<GeoLocation> verticesGeo = new List<GeoLocation>();     // lat/long
-    public List<TrajWaypoint> wayPoints = null;
+    public List<Waypoint> wayPoints = null;
     public List<object> mapFeatures = new List<object>();               // hold the feature, as object
     public List<object> waypointsFeatures = new List<object>();         // hold the feature, as object of the generated trajectory
     public List<NarratedGeoLocation> errorLocs = new List<NarratedGeoLocation>();

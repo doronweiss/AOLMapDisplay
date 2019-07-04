@@ -200,7 +200,7 @@ namespace AOLMapDisplay {
       return new GeoLocation() { lat = pt.Y, lon = pt.X, alt = 0 };
     }
 
-    Mapsui.Geometries.Point MapsuiPtFromWaypoint(TrajWaypoint twp) {
+    Mapsui.Geometries.Point MapsuiPtFromWaypoint(Waypoint twp) {
       WorldCoord wr = FromGeo(twp.lat * AppConsts.r2d, twp.lon * AppConsts.r2d);
       Mapsui.Geometries.Point pt = new Mapsui.Geometries.Point() { X = wr.x, Y = wr.y };
       return pt;
