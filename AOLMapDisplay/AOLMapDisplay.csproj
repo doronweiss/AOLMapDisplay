@@ -117,7 +117,7 @@
     </Compile>
     <Compile Include="AppConfigSvc.cs" />
     <Compile Include="AppManager.cs" />
-    <Compile Include="DataLineDefs .cs" />
+    <Compile Include="MapeedDataDefs .cs" />
     <Compile Include="GenDefs.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -125,6 +125,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MappedDataStore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

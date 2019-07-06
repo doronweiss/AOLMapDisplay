@@ -54,17 +54,17 @@ namespace AOLMapDisplay {
 
 /*
     // draw a trajectory - simple version called on change
-    private void DrawTrajectory(DataLineDefs traj, TrajChangeOpEnum changeType) {
+    private void DrawTrajectory(MappedLine traj, TrajChangeOpEnum changeType) {
       DrawTrajectory(traj, changeType, false);
     }
 
     // draws the trajectory with waypo
-    public void DrawWithWP(DataLineDefs traj) {
+    public void DrawWithWP(MappedLine traj) {
       DrawTrajectory(traj, TrajChangeOpEnum.Changed, true);
     }
 
 
-    private void DrawTrajectory(DataLineDefs traj, TrajChangeOpEnum changeType, bool drawWaypoints) {
+    private void DrawTrajectory(MappedLine traj, TrajChangeOpEnum changeType, bool drawWaypoints) {
       // set style
       bool applyStyle = traj.Selected || traj.HasWaypoints;
       Mapsui.Styles.Color styleColor = Mapsui.Styles.Color.Black;
@@ -200,8 +200,8 @@ namespace AOLMapDisplay {
       return new GeoLocation() { lat = pt.Y, lon = pt.X, alt = 0 };
     }
 
-    Mapsui.Geometries.Point MapsuiPtFromWaypoint(Waypoint twp) {
-      WorldCoord wr = FromGeo(twp.lat * AppConsts.r2d, twp.lon * AppConsts.r2d);
+    Mapsui.Geometries.Point MapsuiPtFromWaypoint(MappedPoint twp) {
+      WorldCoord wr = FromGeo(twp.geo.lat * AppConsts.r2d, twp.geo.lon * AppConsts.r2d);
       Mapsui.Geometries.Point pt = new Mapsui.Geometries.Point() { X = wr.x, Y = wr.y };
       return pt;
     }

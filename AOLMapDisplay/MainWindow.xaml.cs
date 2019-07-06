@@ -16,6 +16,7 @@ using BruTile.Predefined;
 using BruTile.Wms;
 using Mapsui.Layers;
 using Mapsui.Styles;
+using Microsoft.Win32;
 using Layer = Mapsui.Layers.Layer;
 
 namespace AOLMapDisplay {
@@ -67,6 +68,7 @@ namespace AOLMapDisplay {
     }
 
     private void OnLoadDataBtnClick(object sender, RoutedEventArgs e) {
+      OpenFileDialog ofd = new OpenFileDialog() { Filter = "basic files (*.draw)|*.draw", RestoreDirectory = true };
 
     }
 
