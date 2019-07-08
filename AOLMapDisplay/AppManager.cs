@@ -67,6 +67,10 @@ namespace AOLMapDisplay {
           ["Label"] = $"Hi",
           ["Type"] = "vertex"
         };
+        ft.Styles.Add(new Mapsui.Styles.SymbolStyle() {
+          Fill = new Mapsui.Styles.Brush(Mapsui.Styles.Color.Green),
+          Outline = { Color = Mapsui.Styles.Color.Red, Width = 2 }
+        });
         ft[KeyField] = mp.featureId;
         trjLyrFeatures.Add(ft);
       }
@@ -80,6 +84,7 @@ namespace AOLMapDisplay {
           ["Label"] = $"Hi",
           ["Type"] = "vertex"
         };
+        ft.Styles.Add(new Mapsui.Styles.VectorStyle() { Line = new Pen(Mapsui.Styles.Color.Yellow, 2) });
         ft[KeyField] = ml.featureId;
         trjLyrFeatures.Add(ft);
       }
