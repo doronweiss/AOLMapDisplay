@@ -69,7 +69,14 @@ namespace AOLMapDisplay {
 
     private void OnLoadDataBtnClick(object sender, RoutedEventArgs e) {
       OpenFileDialog ofd = new OpenFileDialog() { Filter = "basic files (*.draw)|*.draw", RestoreDirectory = true };
-
+      if (ofd.ShowDialog() ?? false) {
+        string errorStr = "";
+        bool clearCurrent = clearCurrCHB.IsChecked ?? false;
+        bool res =
+          manager.LoadData(ofd.FileName,clearCurrent);
+        if (!res)
+          MessageBox.Show($"Failed loading");
+      }
     }
 
     //https://stackoverflow.com/questions/54950439/printing-from-mapsui-skiasharp

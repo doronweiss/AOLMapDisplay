@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 using MathNet.Numerics.LinearAlgebra;
 
 namespace AOLMapDisplay {
-  public enum TrajChangeOpEnum { Changed, Removed };
+  public class BaseMappedOnj {
+    public int featureId;
+  }
 
-  public class MappedPoint {
+
+  public class MappedPoint : BaseMappedOnj {
     public WorldCoord world;
     public GeoLocation geo;
     public double radius = 0.0;
@@ -26,7 +29,7 @@ namespace AOLMapDisplay {
     }
   }
 
-  class MappedLine {
+  class MappedLine : BaseMappedOnj {
     public List<MappedPoint> vertices = null;
     public List<object> mapFeatures = new List<object>();               // hold the feature, as object
     //

@@ -32,7 +32,7 @@
         <ColumnDefinition Width="*"/>
       </Grid.ColumnDefinitions>
       <Button Name="loadDataBTN" Grid.Column="1" Content="Load" Style="{StaticResource RoundCornerButton}" VerticalAlignment="Center" Click="OnLoadDataBtnClick"/>
-      <Button Name="printMapBTN" Grid.Column="3" Content="Print" Style="{StaticResource RoundCornerButton}" VerticalAlignment="Center" Click="OnPrintMapBtnClick"/>
+      <CheckBox Name="clearCurrCHB" Grid.Column="3" Content="Clear current" VerticalAlignment="Center"/>
     </Grid>
   </Grid>
 </Window>

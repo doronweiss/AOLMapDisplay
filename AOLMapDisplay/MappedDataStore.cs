@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 
 namespace AOLMapDisplay {
   class MappedDataStore {
-    private double cntrLat, cntrLon;
-    private List<MappedPoint> points;
-    private List<MappedLine> lines;
+    private static int nextFeatId = 0;
+    public double cntrLat, cntrLon;
+    public List<MappedPoint> points = new List<MappedPoint>();
+    public List<MappedLine> lines = new List<MappedLine>();
 
-    public bool LoadData(string fileName, bool clearFirst) {
+    public bool LoadData(string fileName, CoordinatesConverter coordsCvrtr, bool clearFirst) {
       if (clearFirst) {
         points?.Clear();
         lines?.Clear();
@@ -19,13 +20,13 @@ namespace AOLMapDisplay {
       string ext = Path.GetExtension(fileName).TrimStart('.');
       switch (ext) {
         case "draw":
-          return true;
+          return LoadBaseDrawData(fileName, coordsCvrtr);
         default:
           return true;
       }
     }
 
-    private bool LoadBaseDrawData(string fileName) {
+    private bool LoadBaseDrawData(string fileName, CoordinatesConverter coordsCvrtr) {
       try {
         string line;
         using (StreamReader sr = new StreamReader(fileName)) {
@@ -41,7 +42,9 @@ namespace AOLMapDisplay {
                 break;
               case "symb": {
                 parts = line.Substring(5).Split(new[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries);
-                MappedPoint mp = new MappedPoint() { geo = new GeoLocation() { lat = double.Parse(parts[0]), lon = double.Parse(parts[1]), alt = 0.0 } };
+                MappedPoint mp = new MappedPoint() {featureId = nextFeatId++,
+                  geo = new GeoLocation() { lat = double.Parse(parts[0]), lon = double.Parse(parts[1]), alt = 0.0 } };
+                mp.world = coordsCvrtr.FromGeo(mp.geo);
                 points.Add(mp);
               }
               break;
@@ -50,8 +53,9 @@ namespace AOLMapDisplay {
                 int sz = parts.Length / 2;
                 MappedLine ml = new MappedLine() {vertices = new List<MappedPoint>()};
                 for (int idx = 0; idx < sz; idx++) {
-                  MappedPoint mp = new MappedPoint()
-                    {geo = new GeoLocation() {lat = double.Parse(parts[idx * 2]), lon = double.Parse(parts[idx * 2 + 1]), alt = 0.0}};
+                  MappedPoint mp = new MappedPoint(){ featureId = nextFeatId++,
+                    geo = new GeoLocation() {lat = double.Parse(parts[idx * 2]), lon = double.Parse(parts[idx * 2 + 1]), alt = 0.0}};
+                  mp.world = coordsCvrtr.FromGeo(mp.geo);
                   ml.vertices.Add(mp);
                 }
                 lines.Add(ml);
